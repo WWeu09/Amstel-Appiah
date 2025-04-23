@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aanbeveling Detail - Amstel & Appiah</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styles specific to recommendation detail page */
+        .recommendation-detail {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .recommendation-header {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .recommendation-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-black);
+        }
+
+        .recommendation-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .recommendation-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: var(--color-lighter-gray);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--color-medium-gray);
+            transition: all 0.2s ease;
+        }
+
+        .recommendation-tag:hover {
+            background-color: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        .recommendation-authenticated {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            background-color: rgba(200, 169, 126, 0.1);
+            border: 1px solid var(--color-accent);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--color-accent);
+            margin-left: var(--spacing-sm);
+        }
+
+        .recommendation-authenticated::before {
+            content: "✓";
+            margin-right: 5px;
+            font-weight: bold;
+        }
+
+        .recommendation-main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .recommendation-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .recommendation-description {
+            line-height: 1.8;
+            color: var(--color-medium-gray);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .recommendation-quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--color-accent);
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-left: 3px solid var(--color-accent);
+            background-color: rgba(200, 169, 126, 0.05);
+            margin: var(--spacing-lg) 0;
+            line-height: 1.6;
+        }
+
+        .recommendation-sidebar {
+            background-color: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            height: fit-content;
+        }
+
+        .sidebar-section {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .sidebar-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-black);
+            position: relative;
+            padding-bottom: var(--spacing-xs);
+        }
+
+        .sidebar-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--color-accent);
+        }
+
+        .sidebar-content {
+            color: var(--color-medium-gray);
+        }
+
+        .sidebar-link {
+            display: inline-block;
+            color: var(--color-accent);
+            margin-top: var(--spacing-xs);
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-link:hover {
+            color: var(--color-black);
+            text-decoration: underline;
+        }
+
+        .map-button {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: var(--color-black);
+            color: var(--color-white);
+            border-radius: var(--border-radius);
+            margin-top: var(--spacing-sm);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .map-button:hover {
+            background-color: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        .map-button::before {
+            content: "📍";
+            margin-right: 5px;
+        }
+
+        .gallery {
+            margin-top: var(--spacing-lg);
+        }
+
+        .gallery-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-black);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .gallery-item {
+            height: 150px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: transparent;
+            color: var(--color-black);
+            border: 1px solid var(--color-black);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-lg);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .back-button:hover {
+            background-color: var(--color-black);
+            color: var(--color-white);
+        }
+
+        .back-button::before {
+            content: "←";
+            margin-right: 5px;
+        }
+
+        /* Lightbox for gallery */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            padding: var(--spacing-xl);
+        }
+
+        .lightbox.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .lightbox-image {
+            max-width: 90%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--color-white);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.1);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-white);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .lightbox-nav:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .recommendation-content {
+                grid-template-columns: 1fr;
+            }
+
+            .recommendation-title {
+                font-size: 2rem;
+            }
+
+            .recommendation-main-image {
+                height: 300px;
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .recommendation-title {
+                font-size: 1.8rem;
+            }
+
+            .recommendation-main-image {
+                height: 250px;
+            }
+
+            .recommendation-quote {
+                font-size: 1rem;
+                padding: var(--spacing-sm) var(--spacing-md);
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            .gallery-item {
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">AMSTEL & APPIAH</a>
+            <nav class="nav">
+                <a href="https://vanappiah.com/" class="nav-link">Van Appiah</a>
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#products" class="nav-link">Producten</a>
+                <a href="index.html#favorites" class="nav-link">Favorieten</a>
+                <a href="index.html#recommendations" class="nav-link active">Aanbevelingen</a>
+                <a href="index.html#terms" class="nav-link">Voorwaarden</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-button" id="mobile-menu-button">☰</button>
+                <button class="cart-icon" id="cart-button">
+                    🛒
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <span class="logo">SHOP</span>
+            <button class="mobile-menu-close" id="mobile-menu-close">✕</button>
+        </div>
+        <nav class="mobile-nav">
+            <a href="https://vanappiah.com/" class="mobile-nav-link">Van Appiah</a>
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="index.html#products" class="mobile-nav-link">Producten</a>
+            <a href="index.html#favorites" class="mobile-nav-link">Favorieten</a>
+            <a href="index.html#recommendations" class="mobile-nav-link active">Aanbevelingen</a>
+            <a href="index.html#terms" class="mobile-nav-link">Voorwaarden</a>
+            <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Recommendation Detail Page -->
+    <main class="recommendation-detail">
+        <div class="container">
+            <a href="index.html#recommendations" class="back-button">Terug naar Aanbevelingen</a>
+            
+            <div id="recommendation-detail-content">
+                <!-- Content will be loaded dynamically -->
+                <div class="loading">Aanbeveling laden...</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>Navigatie</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index.html">Van Appiah</a></li>
+                        <li class="footer-link"><a href="index.html">Home</a></li>
+                        <li class="footer-link"><a href="index.html#products">Producten</a></li>
+                        <li class="footer-link"><a href="index.html#favorites">Favorieten</a></li>
+                        <li class="footer-link"><a href="index.html#recommendations">Aanbevelingen</a></li>
+                        <li class="footer-link"><a href="index.html#terms">Voorwaarden</a></li>
+                        <li class="footer-link"><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <div class="contact-info">
+                        <p><span class="contact-label">Tel:</span> 06 57160395</p>
+                        <p><span class="contact-label">Email:</span> <a href="mailto:vanappiah.com@gmail.com" class="footer-email">vanappiah.com@gmail.com</a></p>
+                        <p><span class="contact-label">Email:</span> <a href="mailto:vawerkers@gmail.com" class="footer-email">vawerkers@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Volg Ons</h3>
+                    <div class="share-buttons">
+                        <a href="#" class="share-button">FB</a>
+                        <a href="#" class="share-button">IG</a>
+                        <a href="#" class="share-button">TW</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 E-commerce Website. Alle rechten voorbehouden.</p>
+                <p class="powered-by">Powered by van Appiah</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox for Gallery -->
+    <div class="lightbox" id="lightbox">
+        <img src="/placeholder.svg" alt="Gallery Image" class="lightbox-image" id="lightbox-image">
+        <span class="lightbox-close" id="lightbox-close">×</span>
+        <span class="lightbox-nav lightbox-prev" id="lightbox-prev">❮</span>
+        <span class="lightbox-nav lightbox-next" id="lightbox-next">❯</span>
+    </div>
+
+    <script>
+        // DOM Elements
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const recommendationDetailContent = document.getElementById('recommendation-detail-content');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+
+        // Data URL
+        const recommendationsUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRm5YGIeXtg0yd5Uso76v1SL7hTuY_yjminNoGaYrgTl652ICrqThxxolx22esLxOXY_-sJojI8dqNy/pub?output=csv';
+
+        // Global Variables
+        let recommendations = [];
+        let currentRecommendation = null;
+        let galleryImages = [];
+        let currentGalleryIndex = 0;
+
+        // Helper Functions
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        function slugify(text) {
+            return text.toString().toLowerCase()
+                .replace(/\s+/g, '-')           // Replace spaces with -
+                .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+                .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+                .replace(/^-+/, '')             // Trim - from start of text
+                .replace(/-+$/, '');            // Trim - from end of text
+        }
+
+        function formatWebsiteUrl(url) {
+            if (!url) return '';
+            if (url.startsWith('http://') || url.startsWith('https://')) {
+                return url;
+            }
+            return 'https://' + url;
+        }
+
+        // Fetch Data from Google Sheets
+        async function fetchCSV(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch data: ${response.status}`);
+                }
+                const text = await response.text();
+                return parseCSV(text);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                return [];
+            }
+        }
+
+        function parseCSV(text) {
+            const lines = text.split('\n');
+            const headers = lines[0].split(',').map(header => header.trim().replace(/^"(.*)"$/, '$1'));
+            
+            const result = [];
+            for (let i = 1; i < lines.length; i++) {
+                if (!lines[i].trim()) continue;
+                
+                // Handle quoted fields with commas
+                const row = {};
+                let currentPosition = 0;
+                let fieldValue = '';
+                let inQuotes = false;
+                
+                for (let j = 0; j < headers.length; j++) {
+                    // Skip if we've reached the end of the line
+                    if (currentPosition >= lines[i].length) {
+                        row[headers[j]] = '';
+                        continue;
+                    }
+                    
+                    fieldValue = '';
+                    inQuotes = lines[i][currentPosition] === '"';
+                    
+                    if (inQuotes) {
+                        currentPosition++; // Skip the opening quote
+                        while (currentPosition < lines[i].length) {
+                            if (lines[i][currentPosition] === '"' && 
+                                (currentPosition + 1 >= lines[i].length || lines[i][currentPosition + 1] === ',')) {
+                                currentPosition++; // Skip the closing quote
+                                break;
+                            }
+                            fieldValue += lines[i][currentPosition];
+                            currentPosition++;
+                        }
+                    } else {
+                        while (currentPosition < lines[i].length && lines[i][currentPosition] !== ',') {
+                            fieldValue += lines[i][currentPosition];
+                            currentPosition++;
+                        }
+                    }
+                    
+                    row[headers[j]] = fieldValue.trim();
+                    
+                    // Skip the comma
+                    if (currentPosition < lines[i].length && lines[i][currentPosition] === ',') {
+                        currentPosition++;
+                    }
+                }
+                
+                result.push(row);
+            }
+            
+            return result;
+        }
+
+        // Load Recommendation Detail
+        async function loadRecommendationDetail() {
+            const id = getParameterByName('id');
+            if (!id) {
+                recommendationDetailContent.innerHTML = '<div class="error">Aanbeveling niet gevonden</div>';
+                return;
+            }
+            
+            recommendations = await fetchCSV(recommendationsUrl);
+            
+            // Find the recommendation by ID or slug
+            currentRecommendation = recommendations.find(rec => {
+                const recId = rec['ID'] || '';
+                const recName = rec['Partnernaam'] || '';
+                return recId === id || slugify(recName) === id;
+            });
+            
+            if (!currentRecommendation) {
+                recommendationDetailContent.innerHTML = '<div class="error">Aanbeveling niet gevonden</div>';
+                return;
+            }
+            
+            renderRecommendationDetail();
+        }
+
+        function renderRecommendationDetail() {
+            if (!currentRecommendation) return;
+            
+            const name = currentRecommendation['Partnernaam'] || 'Aanbeveling';
+            const description = currentRecommendation['Beschrijving (pagina)'] || currentRecommendation['Beschrijving'] || '';
+            const imageUrl = currentRecommendation['Afbeelding (showroom)'] || 'https://placeholder.svg?height=400&width=800';
+            const extraImages = currentRecommendation['Extra foto\'s'] ? currentRecommendation['Extra foto\'s'].split(',').map(img => img.trim()) : [];
+            const address = currentRecommendation['Adres'] || '';
+            const quote = currentRecommendation['Quote'] || '';
+            const tags = currentRecommendation['Tags'] ? currentRecommendation['Tags'].split(',').map(tag => tag.trim()) : [];
+            const authenticated = currentRecommendation['Authenticated'] === 'TRUE' || currentRecommendation['Authenticated'] === 'true' || currentRecommendation['Authenticated'] === '1';
+            const website = currentRecommendation['Website'] || '';
+            
+            // Set gallery images
+            galleryImages = [imageUrl, ...extraImages].filter(img => img);
+            
+            // Create tags HTML
+            let tagsHtml = '';
+            if (tags.length) {
+                tagsHtml = '<div class="recommendation-tags">';
+                tags.forEach(tag => {
+                    tagsHtml += `<span class="recommendation-tag">${tag}</span>`;
+                });
+                tagsHtml += '</div>';
+            }
+            
+            // Create authenticated badge HTML
+            const authenticatedHtml = authenticated ? '<span class="recommendation-authenticated">Geverifieerd</span>' : '';
+            
+            // Create quote HTML
+            const quoteHtml = quote ? `<blockquote class="recommendation-quote">"${quote}"</blockquote>` : '';
+            
+            // Create gallery HTML
+            let galleryHtml = '';
+            if (extraImages.length) {
+                galleryHtml = `
+                    <div class="gallery">
+                        <h3 class="gallery-title">Foto's</h3>
+                        <div class="gallery-container">
+                `;
+                
+                extraImages.forEach((img, index) => {
+                    galleryHtml += `
+                        <div class="gallery-item" data-index="${index + 1}">
+                            <img src="${img}" alt="${name} - Foto ${index + 1}" class="gallery-image">
+                        </div>
+                    `;
+                });
+                
+                galleryHtml += `
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Create Google Maps link
+            const mapsUrl = address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}` : '';
+            const mapsButton = address ? `<a href="${mapsUrl}" target="_blank" class="map-button">Bekijk op Google Maps</a>` : '';
+            
+            // Create website link
+            const websiteUrl = formatWebsiteUrl(website);
+            const websiteLink = website ? `<a href="${websiteUrl}" target="_blank" class="sidebar-link">${website}</a>` : '';
+            
+            // Set the content
+            recommendationDetailContent.innerHTML = `
+                <div class="recommendation-header">
+                    <h1 class="recommendation-title">${name} ${authenticatedHtml}</h1>
+                    ${tagsHtml}
+                </div>
+                
+                <img src="${imageUrl}" alt="${name}" class="recommendation-main-image">
+                
+                <div class="recommendation-content">
+                    <div class="recommendation-main">
+                        <div class="recommendation-description">
+                            ${description}
+                        </div>
+                        
+                        ${quoteHtml}
+                        
+                        ${galleryHtml}
+                    </div>
+                    
+                    <div class="recommendation-sidebar">
+                        ${address ? `
+                            <div class="sidebar-section">
+                                <h4 class="sidebar-title">Adres</h4>
+                                <div class="sidebar-content">
+                                    <p>${address}</p>
+                                    ${mapsButton}
+                                </div>
+                            </div>
+                        ` : ''}
+                        
+                        ${website ? `
+                            <div class="sidebar-section">
+                                <h4 class="sidebar-title">Website</h4>
+                                <div class="sidebar-content">
+                                    ${websiteLink}
+                                </div>
+                            </div>
+                        ` : ''}
+                        
+                        ${tags.length ? `
+                            <div class="sidebar-section">
+                                <h4 class="sidebar-title">Tags</h4>
+                                <div class="sidebar-content">
+                                    <div class="recommendation-tags">
+                                        ${tags.map(tag => `<span class="recommendation-tag">${tag}</span>`).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+            
+            // Add event listeners for gallery
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const index = parseInt(item.dataset.index);
+                    openLightbox(index);
+                });
+            });
+        }
+
+        // Lightbox Functions
+        function openLightbox(index) {
+            if (!galleryImages.length) return;
+            
+            currentGalleryIndex = index;
+            lightboxImage.src = galleryImages[currentGalleryIndex];
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function prevImage() {
+            if (!galleryImages.length) return;
+            
+            currentGalleryIndex = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
+            lightboxImage.src = galleryImages[currentGalleryIndex];
+        }  % galleryImages.length;
+            lightboxImage.src = galleryImages[currentGalleryIndex];
+        }
+
+        function nextImage() {
+            if (!galleryImages.length) return;
+            
+            currentGalleryIndex = (currentGalleryIndex + 1) % galleryImages.length;
+            lightboxImage.src = galleryImages[currentGalleryIndex];
+        }
+
+        // Mobile Menu Functions
+        function openMobileMenu() {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Event Listeners
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', prevImage);
+        lightboxNext.addEventListener('click', nextImage);
+        
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadRecommendationDetail();
+        });
+    </script>
+</body>
+</html>
