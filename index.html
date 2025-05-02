@@ -3608,5 +3608,44 @@
             }
         });
     </script>
+    <script>
+        // Parse de URL-parameters
+        const params = new URLSearchParams(window.location.search);
+    
+        // Check of er een specifieke pagina gevraagd is (zoals page=products)
+        const pageParam = params.get("page");
+        const productParam = params.get("product");
+        const sellerParam = params.get("seller");
+        const recommendationParam = params.get("recommendation");
+    
+        if (pageParam) {
+            navigateTo(pageParam);
+        }
+    
+        // Voor producten, verkopers of aanbevelingen (indien je die ID's/slugs gebruikt)
+        if (productParam) {
+            // Vervang door jouw bestaande logica om een product te tonen
+            loadProducts().then(() => {
+                const product = products.find(p => slugify(p.Naam) === productParam);
+                if (product) showProductDetail(product);
+            });
+        }
+    
+        if (sellerParam) {
+            // Laad verkoper pagina
+            loadProducts().then(() => {
+                const seller = products.find(p => slugify(p.Verkoper) === sellerParam);
+                if (seller) showSellerPage(seller.Verkoper);
+            });
+        }
+    
+        if (recommendationParam) {
+            loadRecommendations().then(() => {
+                const rec = recommendations.find(r => slugify(r.Partnernaam) === recommendationParam);
+                if (rec) showRecommendationDetail(rec);
+            });
+        }
+    </script>
+    
 </body>
 </html>
