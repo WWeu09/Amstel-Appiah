@@ -105,25 +105,18 @@
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full bg-white text-gray-900 overflow-x-hidden">
-  <div id="app" class="h-full w-full overflow-auto">
-   <!-- Navigation -->
+  <div id="app" class="h-full w-full overflow-auto"><!-- Navigation -->
    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-blur border-b border-gray-100">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="flex items-center justify-between h-16">
-      <a href="#" onclick="navigateTo('home')" class="flex items-center space-x-2">
-       <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-        <span class="text-white font-semibold text-sm">A</span>
+     <div class="flex items-center justify-between h-16"><a href="#" onclick="navigateTo('home')" class="flex items-center space-x-2">
+       <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center"><span class="text-white font-semibold text-sm">A</span>
        </div><span id="nav-title" class="font-medium text-lg tracking-tight">Amstel &amp; Appiah</span> </a>
-      <div class="hidden md:flex items-center space-x-8">
-       <a href="#" onclick="navigateTo('home')" class="text-sm text-gray-600 hover:text-black transition-colors">Ontdek</a> <a href="#" onclick="filterByCategory('all')" class="text-sm text-gray-600 hover:text-black transition-colors">Categorieën</a> <a href="#" onclick="showCities()" class="text-sm text-gray-600 hover:text-black transition-colors">Steden</a>
+      <div class="hidden md:flex items-center space-x-8"><a href="#" onclick="navigateTo('home')" class="text-sm text-gray-600 hover:text-black transition-colors">Ontdek</a> <a href="#" onclick="filterByCategory('all')" class="text-sm text-gray-600 hover:text-black transition-colors">Categorieën</a> <a href="#" onclick="showCities()" class="text-sm text-gray-600 hover:text-black transition-colors">Steden</a> <a href="#" onclick="navigateTo('legal')" class="text-sm text-gray-600 hover:text-black transition-colors">Info</a>
       </div>
-      <div class="flex items-center space-x-3">
-       <button onclick="toggleSearch()" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      <div class="flex items-center space-x-3"><button onclick="toggleSearch()" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg></button> <button class="md:hidden p-2 rounded-full hover:bg-gray-100 transition-colors" onclick="toggleMobileMenu()">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
         </svg></button>
       </div>
      </div>
@@ -131,22 +124,18 @@
     <div id="search-bar" class="hidden border-t border-gray-100 py-4 px-4 sm:px-6 lg:px-8">
      <div class="max-w-2xl mx-auto">
       <div class="relative">
-       <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+       <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
        </svg><input type="text" id="search-input" placeholder="Zoek op naam, categorie of stad..." class="w-full pl-12 pr-4 py-3 bg-gray-50 rounded-full text-sm focus:bg-white border border-transparent focus:border-gray-200 transition-all" oninput="handleSearch(this.value)">
       </div>
      </div>
     </div><!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 py-4 px-4">
-     <div class="space-y-3">
-      <a href="#" onclick="navigateTo('home'); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Ontdek</a> <a href="#" onclick="filterByCategory('all'); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Categorieën</a> <a href="#" onclick="showCities(); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Steden</a>
+     <div class="space-y-3"><a href="#" onclick="navigateTo('home'); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Ontdek</a> <a href="#" onclick="filterByCategory('all'); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Categorieën</a> <a href="#" onclick="showCities(); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Steden</a> <a href="#" onclick="navigateTo('legal'); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Info</a>
      </div>
     </div>
    </nav><!-- Main Content -->
-   <main id="main-content" class="pt-16">
-    <!-- Home View -->
-    <div id="home-view">
-     <!-- Hero Section -->
+   <main id="main-content" class="pt-16"><!-- Home View -->
+    <div id="home-view"><!-- Hero Section -->
      <section class="relative min-h-[70%] flex items-center justify-center px-4 py-20 overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white"></div>
       <div class="absolute top-20 left-10 w-72 h-72 bg-gray-100 rounded-full blur-3xl opacity-60"></div>
@@ -154,19 +143,16 @@
       <div class="relative z-10 text-center max-w-3xl mx-auto">
        <h1 id="hero-heading" class="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-black animate-fade-in-up">Curated Local Excellence</h1>
        <p id="hero-subheading" class="mt-6 text-lg sm:text-xl text-gray-600 font-light leading-relaxed animate-fade-in-up stagger-1">Ontdek vertrouwde lokale bedrijven, producten en diensten in jouw buurt</p>
-       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up stagger-2">
-        <button onclick="scrollToItems()" class="px-8 py-3 bg-black text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-all hover:scale-105"> Ontdek Nu </button> <button onclick="showCities()" class="px-8 py-3 bg-white text-black rounded-full text-sm font-medium border border-gray-200 hover:border-gray-300 transition-all hover:scale-105"> Bekijk Steden </button>
+       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up stagger-2"><button onclick="scrollToItems()" class="px-8 py-3 bg-black text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-all hover:scale-105"> Ontdek Nu </button> <button onclick="showCities()" class="px-8 py-3 bg-white text-black rounded-full text-sm font-medium border border-gray-200 hover:border-gray-300 transition-all hover:scale-105"> Bekijk Steden </button>
        </div>
       </div>
      </section><!-- Filter Bar -->
      <section id="filter-section" class="sticky top-16 z-40 bg-white/90 backdrop-blur-lg border-b border-gray-100 py-4">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
        <div class="flex flex-wrap items-center gap-3">
-        <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0">
-         <button onclick="filterByCategory('all')" class="filter-btn active px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="all"> Alles </button> <button onclick="filterByCategory('restaurant')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="restaurant"> Restaurants </button> <button onclick="filterByCategory('service')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="service"> Diensten </button> <button onclick="filterByCategory('product')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="product"> Producten </button> <button onclick="filterByCategory('beauty')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="beauty"> Beauty </button>
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0"><button onclick="filterByCategory('all')" class="filter-btn active px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="all"> Alles </button> <button onclick="filterByCategory('restaurant')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="restaurant"> Restaurants </button> <button onclick="filterByCategory('service')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="service"> Diensten </button> <button onclick="filterByCategory('product')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="product"> Producten </button> <button onclick="filterByCategory('beauty')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="beauty"> Beauty </button>
         </div>
-        <div class="ml-auto flex items-center gap-3">
-         <select id="city-filter" onchange="filterByCity(this.value)" class="px-4 py-2 text-sm rounded-full border border-gray-200 bg-white hover:border-gray-300 transition-all cursor-pointer"> <option value="all">Alle steden</option> </select> <select id="sort-filter" onchange="sortItems(this.value)" class="px-4 py-2 text-sm rounded-full border border-gray-200 bg-white hover:border-gray-300 transition-all cursor-pointer"> <option value="featured">Featured</option> <option value="rating">Beste beoordeeld</option> <option value="newest">Nieuwste</option> </select>
+        <div class="ml-auto flex items-center gap-3"><select id="city-filter" onchange="filterByCity(this.value)" class="px-4 py-2 text-sm rounded-full border border-gray-200 bg-white hover:border-gray-300 transition-all cursor-pointer"> <option value="all">Alle steden</option> </select> <select id="sort-filter" onchange="sortItems(this.value)" class="px-4 py-2 text-sm rounded-full border border-gray-200 bg-white hover:border-gray-300 transition-all cursor-pointer"> <option value="featured">Featured</option> <option value="rating">Beste beoordeeld</option> <option value="newest">Nieuwste</option> </select>
         </div>
        </div>
       </div>
@@ -179,8 +165,7 @@
          <p class="mt-2 text-gray-500">Uitgelichte lokale pareltjes</p>
         </div>
        </div>
-       <div id="featured-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Featured items will be inserted here -->
+       <div id="featured-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Featured items will be inserted here -->
        </div>
       </div>
      </section><!-- All Items Section -->
@@ -192,28 +177,28 @@
          <p class="mt-2 text-gray-500" id="items-count">Alle lokale bedrijven</p>
         </div>
        </div>
-       <div id="items-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        <!-- Items will be inserted here -->
+       <div id="items-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"><!-- Items will be inserted here -->
        </div>
        <div id="no-results" class="hidden text-center py-16">
         <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-         <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+         <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
          </svg>
         </div>
         <p class="text-gray-500">Geen resultaten gevonden</p><button onclick="resetFilters()" class="mt-4 text-sm text-black underline hover:no-underline">Reset filters</button>
        </div>
       </div>
      </section>
+    </div><!-- Legal Pages View -->
+    <div id="legal-view" class="hidden pt-20">
+     <div id="legal-content" class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16"><!-- Legal content inserted here -->
+     </div>
     </div><!-- Profile View -->
     <div id="profile-view" class="hidden">
-     <div id="profile-content">
-      <!-- Profile content will be inserted here -->
+     <div id="profile-content"><!-- Profile content will be inserted here -->
      </div>
     </div><!-- Item Detail View -->
     <div id="item-view" class="hidden">
-     <div id="item-content">
-      <!-- Item content will be inserted here -->
+     <div id="item-content"><!-- Item content will be inserted here -->
      </div>
     </div>
    </main><!-- Footer -->
@@ -222,8 +207,7 @@
      <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
       <div class="md:col-span-2">
        <div class="flex items-center space-x-2 mb-4">
-        <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-         <span class="text-black font-semibold text-sm">A</span>
+        <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center"><span class="text-black font-semibold text-sm">A</span>
         </div><span class="font-medium text-lg tracking-tight">Amstel &amp; Appiah</span>
        </div>
        <p class="text-gray-400 text-sm leading-relaxed max-w-md">Wij verbinden je met vertrouwde lokale bedrijven, diensten en producten. Curated excellence voor jouw buurt.</p>
@@ -241,6 +225,15 @@
        <ul class="space-y-3 text-sm text-gray-400">
         <li><a href="mailto:info@amstelappiah.nl" class="hover:text-white transition-colors">info@amstelappiah.nl</a></li>
         <li><a href="#" class="hover:text-white transition-colors">Instagram</a></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="font-medium mb-4">Juridisch</h4>
+       <ul class="space-y-3 text-sm text-gray-400">
+        <li><a href="#" onclick="showLegalPage('terms')" class="hover:text-white transition-colors">Voorwaarden</a></li>
+        <li><a href="#" onclick="showLegalPage('privacy')" class="hover:text-white transition-colors">Privacy</a></li>
+        <li><a href="#" onclick="showLegalPage('disclaimer')" class="hover:text-white transition-colors">Disclaimer</a></li>
+        <li><a href="#" onclick="showLegalPage('cookies')" class="hover:text-white transition-colors">Cookies</a></li>
        </ul>
       </div>
      </div>
@@ -1129,11 +1122,224 @@
       });
     }
 
+    /* ==============================
+       12. LEGAL PAGES DATA & RENDERING
+    ============================== */
+    
+    const LEGAL_CONTENT = {
+      nl: {
+        terms: {
+          title: '📜 Algemene Voorwaarden',
+          sections: [
+            {
+              heading: '1. Algemeen',
+              text: 'Deze website is een showcase- en presentatieplatform. De informatie, producten en diensten die worden getoond zijn bedoeld ter inspiratie en informatie. De eigenaar van deze website (hierna: "wij") streeft naar een zo correct en actueel mogelijke weergave, maar kan niet garanderen dat alle informatie volledig, correct of actueel is.'
+            },
+            {
+              heading: '2. Geen garantie op producten of diensten',
+              text: 'De producten en diensten die op deze website worden weergegeven:<br>• worden mogelijk aangeboden door derden<br>• zijn niet altijd door ons gecontroleerd<br>• kunnen in kwaliteit, beschikbaarheid en prijs verschillen<br><br>Wij geven geen garanties over:<br>• kwaliteit<br>• werking<br>• echtheid<br>• veiligheid<br>• levering<br><br>Aankopen of afspraken die voortkomen uit deze website zijn volledig op eigen risico.'
+            },
+            {
+              heading: '3. Aansprakelijkheid',
+              text: 'Wij zijn niet aansprakelijk voor:<br>• directe of indirecte schade<br>• financiële verliezen<br>• dataverlies<br>• schade door onjuiste informatie<br>• problemen bij transacties met derden<br><br>Gebruik van deze website is volledig op eigen verantwoordelijkheid.'
+            },
+            {
+              heading: '4. Online fraude & veiligheid',
+              text: 'Wij waarschuwen gebruikers om:<br>• alert te zijn op online fraude<br>• nooit zomaar persoonlijke of financiële gegevens te delen<br>• zelf onderzoek te doen naar aanbieders<br><br>Wij zijn niet verantwoordelijk voor fraude, misleiding of conflicten tussen gebruikers en derden.'
+            },
+            {
+              heading: '5. Leeftijd',
+              text: 'Deze website is primair bedoeld voor gebruikers van 18 jaar en ouder. Minderjarigen mogen de website alleen gebruiken onder toezicht van een ouder of voogd.'
+            },
+            {
+              heading: '6. Wijzigingen',
+              text: 'Wij behouden ons het recht voor deze voorwaarden op elk moment te wijzigen. De meest recente versie is altijd van toepassing.'
+            }
+          ]
+        },
+        privacy: {
+          title: '🔐 Privacybeleid',
+          sections: [
+            {
+              heading: '1. Gegevensverzameling',
+              text: 'Wij kunnen de volgende gegevens verwerken:<br>• naam of gebruikersnaam<br>• e-mailadres<br>• profielinformatie<br>• technische gegevens (zoals IP-adres en browser)<br><br>Deze gegevens worden uitsluitend gebruikt voor:<br>• het functioneren van de website<br>• communicatie<br>• beveiliging en verbetering van de dienst'
+            },
+            {
+              heading: '2. Opslag & beveiliging',
+              text: 'Wij nemen passende maatregelen om gegevens te beschermen, maar kunnen geen absolute veiligheid garanderen. Gegevens worden niet verkocht aan derden.'
+            },
+            {
+              heading: '3. Delen met derden',
+              text: 'Gegevens kunnen gedeeld worden met:<br>• technische dienstverleners (zoals hosting)<br>• alleen wanneer dit noodzakelijk is voor de werking van de website'
+            },
+            {
+              heading: '4. Rechten van gebruikers',
+              text: 'Gebruikers hebben het recht om:<br>• hun gegevens in te zien<br>• gegevens te laten aanpassen<br>• gegevens te laten verwijderen (AVG-compliant)'
+            }
+          ]
+        },
+        disclaimer: {
+          title: '⚠️ Disclaimer',
+          sections: [
+            {
+              heading: 'Belangrijke mededelingen',
+              text: 'De inhoud van deze website is uitsluitend bedoeld voor informatieve en demonstratieve doeleinden.<br><br>Wij geven geen garanties over:<br>• juistheid<br>• volledigheid<br>• geschiktheid voor een specifiek doel<br><br>Gebruik van informatie op deze website gebeurt op eigen risico.'
+            }
+          ]
+        },
+        cookies: {
+          title: '🍪 Cookiebeleid',
+          sections: [
+            {
+              heading: '1. Wat zijn cookies?',
+              text: 'Cookies zijn kleine tekstbestanden die worden opgeslagen op je apparaat om de website beter te laten functioneren.'
+            },
+            {
+              heading: '2. Welke cookies gebruiken wij?',
+              text: 'Wij kunnen cookies gebruiken voor:<br>• basisfunctionaliteit van de website<br>• gebruikersinstellingen<br>• anonieme statistieken'
+            },
+            {
+              heading: '3. Cookies beheren',
+              text: 'Gebruikers kunnen cookies:<br>• uitschakelen via de browser<br>• verwijderen via browserinstellingen<br><br>Het uitschakelen van cookies kan invloed hebben op de werking van de website.'
+            },
+            {
+              heading: '4. Derde partijen',
+              text: 'Sommige cookies kunnen afkomstig zijn van derde partijen (zoals analytics- of hostingdiensten).'
+            }
+          ]
+        }
+      },
+      en: {
+        terms: {
+          title: 'Terms & Conditions',
+          sections: [
+            {
+              heading: '1. General',
+              text: 'This website is a showcase and demonstration platform. All information, products, and services are for inspiration only. We strive for accuracy but do not guarantee completeness or correctness.'
+            },
+            {
+              heading: '2. No warranty on products or services',
+              text: 'Products may be offered by third parties. We do not fully control these and give no guarantees regarding:<br>• quality<br>• functionality<br>• authenticity<br>• availability<br>• delivery<br><br>Purchases or agreements resulting from this website are entirely at your own risk.'
+            },
+            {
+              heading: '3. Liability',
+              text: 'We are not liable for:<br>• direct or indirect damage<br>• financial loss<br>• data loss<br>• damage due to incorrect information<br>• issues arising from third-party transactions<br><br>Use of this website is entirely at your own responsibility.'
+            },
+            {
+              heading: '4. Online fraud & safety',
+              text: 'We warn users to:<br>• remain vigilant against online fraud<br>• never share personal or financial information with strangers<br>• conduct their own research on providers<br><br>We are not responsible for deception or disputes between users and third parties.'
+            },
+            {
+              heading: '5. Age restriction',
+              text: 'This website is intended for users 18 years or older. Minors may use the website only under parental or guardian supervision.'
+            },
+            {
+              heading: '6. Changes',
+              text: 'We reserve the right to update these terms at any time. The latest version always applies.'
+            }
+          ]
+        },
+        privacy: {
+          title: 'Privacy Policy',
+          sections: [
+            {
+              heading: '1. Data collection',
+              text: 'We may collect:<br>• Name or username<br>• Email address<br>• Profile information<br>• Technical data (IP address, browser)<br><br>Purpose: website functionality, communication, security, and service improvement.'
+            },
+            {
+              heading: '2. Storage & security',
+              text: 'Data is securely stored, but absolute security cannot be guaranteed. Data is not sold to third parties.'
+            },
+            {
+              heading: '3. Sharing with third parties',
+              text: 'Data may be shared with service providers only as needed for website operation.'
+            },
+            {
+              heading: '4. User rights',
+              text: 'Users can:<br>• View their data<br>• Modify their data<br>• Request deletion (GDPR compliant)'
+            }
+          ]
+        },
+        disclaimer: {
+          title: 'Disclaimer',
+          sections: [
+            {
+              heading: 'Important notice',
+              text: 'The content of this website is intended for informative and demonstration purposes only.<br><br>We give no guarantees regarding:<br>• accuracy<br>• completeness<br>• suitability for a specific purpose<br><br>Use is at your own risk.'
+            }
+          ]
+        },
+        cookies: {
+          title: 'Cookie Policy',
+          sections: [
+            {
+              heading: '1. What are cookies?',
+              text: 'Cookies are small files that improve functionality or track statistics.'
+            },
+            {
+              heading: '2. Which cookies do we use?',
+              text: 'We may use cookies for:<br>• basic website functionality<br>• user settings<br>• anonymous statistics'
+            },
+            {
+              heading: '3. Management',
+              text: 'Users can disable or delete cookies via browser settings. Some features may not function properly.'
+            },
+            {
+              heading: '4. Third-party cookies',
+              text: 'Some cookies may come from third-party services (analytics, hosting).'
+            }
+          ]
+        }
+      }
+    };
+
+    function showLegalPage(page) {
+      const lang = 'nl';
+      const content = LEGAL_CONTENT[lang][page];
+      
+      if (!content) return;
+      
+      document.getElementById('home-view').classList.add('hidden');
+      document.getElementById('profile-view').classList.add('hidden');
+      document.getElementById('item-view').classList.add('hidden');
+      document.getElementById('legal-view').classList.remove('hidden');
+      
+      let html = `
+        <button onclick="navigateTo('home')" class="inline-flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-black mb-8 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/>
+          </svg>
+          Terug
+        </button>
+        <h1 class="text-3xl sm:text-4xl font-light tracking-tight mb-12">${content.title}</h1>
+        <div class="prose prose-sm max-w-none space-y-8">
+      `;
+      
+      content.sections.forEach((section, idx) => {
+        html += `
+          <div class="animate-fade-in-up" style="animation-delay: ${idx * 0.1}s">
+            <h2 class="text-lg sm:text-xl font-medium mb-3 mt-6">${section.heading}</h2>
+            <p class="text-gray-600 leading-relaxed text-sm sm:text-base">${section.text}</p>
+          </div>
+        `;
+      });
+      
+      html += `
+        </div>
+        <div class="mt-16 pt-8 border-t border-gray-200 text-center text-xs sm:text-sm text-gray-500">
+          <p>© 2024 Amstel & Appiah. Alle rechten voorbehouden.</p>
+        </div>
+      `;
+      
+      document.getElementById('legal-content').innerHTML = html;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     // Start
     document.addEventListener('DOMContentLoaded', () => {
       attachFilterHandlers();
       initApp();
     });
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d012e5d54d849b9',t:'MTc3MTQ1NjA1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d013798403db93e',t:'MTc3MTQ1NjQyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
