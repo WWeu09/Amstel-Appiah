@@ -105,18 +105,25 @@
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full bg-white text-gray-900 overflow-x-hidden">
-  <div id="app" class="h-full w-full overflow-auto"><!-- Navigation -->
+  <div id="app" class="h-full w-full overflow-auto">
+   <!-- Navigation -->
    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-blur border-b border-gray-100">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="flex items-center justify-between h-16"><a href="#" onclick="navigateTo('home')" class="flex items-center space-x-2">
-       <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center"><span class="text-white font-semibold text-sm">A</span>
+     <div class="flex items-center justify-between h-16">
+      <a href="#" onclick="navigateTo('home')" class="flex items-center space-x-2">
+       <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+        <span class="text-white font-semibold text-sm">A</span>
        </div><span id="nav-title" class="font-medium text-lg tracking-tight">Amstel &amp; Appiah</span> </a>
-      <div class="hidden md:flex items-center space-x-8"><a href="#" onclick="navigateTo('home')" class="text-sm text-gray-600 hover:text-black transition-colors">Ontdek</a> <a href="#" onclick="filterByCategory('all')" class="text-sm text-gray-600 hover:text-black transition-colors">Categorieën</a> <a href="#" onclick="showCities()" class="text-sm text-gray-600 hover:text-black transition-colors">Steden</a>
+      <div class="hidden md:flex items-center space-x-8">
+       <a href="#" onclick="navigateTo('home')" class="text-sm text-gray-600 hover:text-black transition-colors">Ontdek</a> <a href="#" onclick="filterByCategory('all')" class="text-sm text-gray-600 hover:text-black transition-colors">Categorieën</a> <a href="#" onclick="showCities()" class="text-sm text-gray-600 hover:text-black transition-colors">Steden</a>
       </div>
-      <div class="flex items-center space-x-3"><button onclick="toggleSearch()" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      <div class="flex items-center space-x-3">
+       <button onclick="toggleSearch()" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg></button> <button class="md:hidden p-2 rounded-full hover:bg-gray-100 transition-colors" onclick="toggleMobileMenu()">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
         </svg></button>
       </div>
      </div>
@@ -124,18 +131,22 @@
     <div id="search-bar" class="hidden border-t border-gray-100 py-4 px-4 sm:px-6 lg:px-8">
      <div class="max-w-2xl mx-auto">
       <div class="relative">
-       <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+       <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
        </svg><input type="text" id="search-input" placeholder="Zoek op naam, categorie of stad..." class="w-full pl-12 pr-4 py-3 bg-gray-50 rounded-full text-sm focus:bg-white border border-transparent focus:border-gray-200 transition-all" oninput="handleSearch(this.value)">
       </div>
      </div>
     </div><!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 py-4 px-4">
-     <div class="space-y-3"><a href="#" onclick="navigateTo('home'); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Ontdek</a> <a href="#" onclick="filterByCategory('all'); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Categorieën</a> <a href="#" onclick="showCities(); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Steden</a>
+     <div class="space-y-3">
+      <a href="#" onclick="navigateTo('home'); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Ontdek</a> <a href="#" onclick="filterByCategory('all'); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Categorieën</a> <a href="#" onclick="showCities(); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Steden</a>
      </div>
     </div>
    </nav><!-- Main Content -->
-   <main id="main-content" class="pt-16"><!-- Home View -->
-    <div id="home-view"><!-- Hero Section -->
+   <main id="main-content" class="pt-16">
+    <!-- Home View -->
+    <div id="home-view">
+     <!-- Hero Section -->
      <section class="relative min-h-[70%] flex items-center justify-center px-4 py-20 overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white"></div>
       <div class="absolute top-20 left-10 w-72 h-72 bg-gray-100 rounded-full blur-3xl opacity-60"></div>
@@ -143,16 +154,19 @@
       <div class="relative z-10 text-center max-w-3xl mx-auto">
        <h1 id="hero-heading" class="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-black animate-fade-in-up">Curated Local Excellence</h1>
        <p id="hero-subheading" class="mt-6 text-lg sm:text-xl text-gray-600 font-light leading-relaxed animate-fade-in-up stagger-1">Ontdek vertrouwde lokale bedrijven, producten en diensten in jouw buurt</p>
-       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up stagger-2"><button onclick="scrollToItems()" class="px-8 py-3 bg-black text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-all hover:scale-105"> Ontdek Nu </button> <button onclick="showCities()" class="px-8 py-3 bg-white text-black rounded-full text-sm font-medium border border-gray-200 hover:border-gray-300 transition-all hover:scale-105"> Bekijk Steden </button>
+       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up stagger-2">
+        <button onclick="scrollToItems()" class="px-8 py-3 bg-black text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-all hover:scale-105"> Ontdek Nu </button> <button onclick="showCities()" class="px-8 py-3 bg-white text-black rounded-full text-sm font-medium border border-gray-200 hover:border-gray-300 transition-all hover:scale-105"> Bekijk Steden </button>
        </div>
       </div>
      </section><!-- Filter Bar -->
      <section id="filter-section" class="sticky top-16 z-40 bg-white/90 backdrop-blur-lg border-b border-gray-100 py-4">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
        <div class="flex flex-wrap items-center gap-3">
-        <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0"><button onclick="filterByCategory('all')" class="filter-btn active px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="all"> Alles </button> <button onclick="filterByCategory('restaurant')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="restaurant"> Restaurants </button> <button onclick="filterByCategory('service')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="service"> Diensten </button> <button onclick="filterByCategory('product')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="product"> Producten </button> <button onclick="filterByCategory('beauty')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="beauty"> Beauty </button>
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0">
+         <button onclick="filterByCategory('all')" class="filter-btn active px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="all"> Alles </button> <button onclick="filterByCategory('restaurant')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="restaurant"> Restaurants </button> <button onclick="filterByCategory('service')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="service"> Diensten </button> <button onclick="filterByCategory('product')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="product"> Producten </button> <button onclick="filterByCategory('beauty')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="beauty"> Beauty </button>
         </div>
-        <div class="ml-auto flex items-center gap-3"><select id="city-filter" onchange="filterByCity(this.value)" class="px-4 py-2 text-sm rounded-full border border-gray-200 bg-white hover:border-gray-300 transition-all cursor-pointer"> <option value="all">Alle steden</option> </select> <select id="sort-filter" onchange="sortItems(this.value)" class="px-4 py-2 text-sm rounded-full border border-gray-200 bg-white hover:border-gray-300 transition-all cursor-pointer"> <option value="featured">Featured</option> <option value="rating">Beste beoordeeld</option> <option value="newest">Nieuwste</option> </select>
+        <div class="ml-auto flex items-center gap-3">
+         <select id="city-filter" onchange="filterByCity(this.value)" class="px-4 py-2 text-sm rounded-full border border-gray-200 bg-white hover:border-gray-300 transition-all cursor-pointer"> <option value="all">Alle steden</option> </select> <select id="sort-filter" onchange="sortItems(this.value)" class="px-4 py-2 text-sm rounded-full border border-gray-200 bg-white hover:border-gray-300 transition-all cursor-pointer"> <option value="featured">Featured</option> <option value="rating">Beste beoordeeld</option> <option value="newest">Nieuwste</option> </select>
         </div>
        </div>
       </div>
@@ -165,7 +179,8 @@
          <p class="mt-2 text-gray-500">Uitgelichte lokale pareltjes</p>
         </div>
        </div>
-       <div id="featured-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Featured items will be inserted here -->
+       <div id="featured-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Featured items will be inserted here -->
        </div>
       </div>
      </section><!-- All Items Section -->
@@ -177,11 +192,13 @@
          <p class="mt-2 text-gray-500" id="items-count">Alle lokale bedrijven</p>
         </div>
        </div>
-       <div id="items-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"><!-- Items will be inserted here -->
+       <div id="items-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <!-- Items will be inserted here -->
        </div>
        <div id="no-results" class="hidden text-center py-16">
         <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-         <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+         <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
          </svg>
         </div>
         <p class="text-gray-500">Geen resultaten gevonden</p><button onclick="resetFilters()" class="mt-4 text-sm text-black underline hover:no-underline">Reset filters</button>
@@ -190,11 +207,13 @@
      </section>
     </div><!-- Profile View -->
     <div id="profile-view" class="hidden">
-     <div id="profile-content"><!-- Profile content will be inserted here -->
+     <div id="profile-content">
+      <!-- Profile content will be inserted here -->
      </div>
     </div><!-- Item Detail View -->
     <div id="item-view" class="hidden">
-     <div id="item-content"><!-- Item content will be inserted here -->
+     <div id="item-content">
+      <!-- Item content will be inserted here -->
      </div>
     </div>
    </main><!-- Footer -->
@@ -203,7 +222,8 @@
      <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
       <div class="md:col-span-2">
        <div class="flex items-center space-x-2 mb-4">
-        <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center"><span class="text-black font-semibold text-sm">A</span>
+        <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+         <span class="text-black font-semibold text-sm">A</span>
         </div><span class="font-medium text-lg tracking-tight">Amstel &amp; Appiah</span>
        </div>
        <p class="text-gray-400 text-sm leading-relaxed max-w-md">Wij verbinden je met vertrouwde lokale bedrijven, diensten en producten. Curated excellence voor jouw buurt.</p>
@@ -235,9 +255,9 @@
        1. CONFIG
     ============================== */
     const CONFIG = {
-      SHEET_ID: '1D0_lkNLfJhnMkT7zs09WplIhmZSTKshdHVn_zFn4EtQ',
+      WEB_APP_URL: 'https://script.google.com/macros/s/AKfycbymxXxlz_BBEJbINMJ7ggaAJKE_p07yq0L41-S3IfQoLmejzvj_Q8lmeS6P0zQ2LuXN/exec',
       DRIVE_API_KEY: 'AIzaSyAyDZqnPrQjHJM5K5xh-qMcG3H_TeRFbiw',
-      SHEET_URL: null,
+      DRIVE_FOLDER_ID: '1wev4sh-c1aVT79_dqODmT-ipyYlL9srU',
       IMAGE_GOOGLE_CDN_SIZE: 'w1600',
       CATEGORIES: ['restaurant', 'service', 'product', 'beauty'],
       CATEGORY_LABELS: {
@@ -247,8 +267,6 @@
         beauty: 'Beauty'
       }
     };
-    
-    CONFIG.SHEET_URL = `https://docs.google.com/spreadsheets/d/${CONFIG.SHEET_ID}/gviz/tq?tqx=out:json&sheet=Profiles`;
 
     const defaultConfig = {
       site_title: 'Amstel & Appiah',
@@ -294,70 +312,147 @@
        4. DATA LAYER
     ============================== */
     
-
-
     /**
-     * Fetch profiles from Google Sheets
+     * Fetch profiles from Web App JSON endpoint (direct array format)
+     * No wrapper parsing needed - direct JSON array
      * @returns {Promise<Array>}
      */
-    async function fetchProfilesFromSheet() {
+    async function fetchProfilesFromWebApp() {
       try {
-        const response = await fetch(CONFIG.SHEET_URL);
-        const text = await response.text();
+        console.log('[WebApp] Fetching from Web App URL...');
+        const response = await fetch(CONFIG.WEB_APP_URL, {
+          method: 'GET',
+          headers: { 'Accept': 'application/json' }
+        });
         
-        // Safe JSON extraction
-        const startIdx = text.indexOf('{');
-        const endIdx = text.lastIndexOf('}') + 1;
-        
-        if (startIdx === -1 || endIdx === 0) {
+        if (!response.ok) {
+          console.error('[WebApp] ❌ HTTP error:', response.status);
           return [];
         }
         
-        const jsonStr = text.substring(startIdx, endIdx);
-        const data = JSON.parse(jsonStr);
+        const data = await response.json();
+        console.log('[WebApp] ✅ JSON received, type:', Array.isArray(data) ? 'array' : typeof data);
         
-        if (!data.table || !data.table.rows || !data.table.cols) {
+        // Validate: expect array of profiles
+        if (!Array.isArray(data)) {
+          console.error('[WebApp] ❌ Expected array, got:', typeof data);
           return [];
         }
         
-        const headers = data.table.cols.map(col => (col.label || '').toLowerCase().replace(/\s+/g, '_'));
-        const profiles = data.table.rows.map((row, idx) => {
-          const values = row.c ? row.c.map(cell => cell ? cell.v : '') : [];
-          const record = {};
-          
-          headers.forEach((header, i) => {
-            if (header && values[i] !== undefined && values[i] !== null) {
-              record[header] = values[i];
-            }
-          });
-          
-          // Normalize profile structure
-          return {
-            id: String(record.id || idx + 1),
-            slug: record.slug || (record.name || 'profile').toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, ''),
-            name: String(record.name || 'Unnamed').trim(),
-            category: String(record.category || 'service').toLowerCase(),
-            city: String(record.city || 'Amsterdam').trim(),
-            bio: String(record.bio || '').trim(),
-            rating: Math.min(5, Math.max(0, parseFloat(record.rating) || 4.5)),
-            featured: record.featured === true || record.featured === 'true' || record.featured === 1,
-            whatsapp: String(record.whatsapp || '').trim(),
-            instagram: String(record.instagram || '').trim(),
-            email: String(record.email || '').trim(),
-            drive_folder_id: String(record.drive_folder_id || '').trim()
+        if (data.length === 0) {
+          console.error('[WebApp] ⚠️ Empty array received');
+          return [];
+        }
+        
+        console.log('[WebApp] ✅ Parsed', data.length, 'profiles');
+        
+        // Normalize profiles
+        const profiles = data.map((item, idx) => {
+          const profile = {
+            id: String(item.id || idx + 1),
+            slug: (item.slug || (item.name || 'profile').toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')).trim(),
+            name: String(item.name || 'Unnamed').trim(),
+            category: String(item.category || 'service').toLowerCase().trim(),
+            city: String(item.city || 'Amsterdam').trim(),
+            bio: String(item.bio || '').trim(),
+            rating: Math.min(5, Math.max(0, parseFloat(item.rating) || 4.5)),
+            featured: item.featured === true || item.featured === 'true' || item.featured === 1 || item.featured === '1',
+            whatsapp: String(item.whatsapp || '').trim(),
+            instagram: String(item.instagram || '').trim(),
+            email: String(item.email || '').trim(),
+            folder_name: String(item.folder_name || '').trim(),
+            images: []
           };
+          
+          if (idx < 3) {
+            console.log('[WebApp] Profile', idx, '→', profile.name, '|', profile.category, '|', profile.folder_name);
+          }
+          
+          return profile;
         }).filter(p => p.name && p.name !== 'Unnamed');
         
+        console.log('[WebApp] ✅ Normalized', profiles.length, 'valid profiles');
         return profiles;
         
       } catch (error) {
-        console.error('[DataLayer] Sheet fetch error:', error);
+        console.error('[WebApp] ❌ Fatal error:', error);
         return [];
       }
     }
 
     /**
-     * Load images from Google Drive folder (parallel)
+     * Load images from Google Drive using folder_name (search by name)
+     * First searches DRIVE_FOLDER_ID for subfolder matching folder_name
+     * Then loads all images from that subfolder
+     * @param {string} folderName - e.g. "luxe-haarstudio-amsterdam"
+     * @returns {Promise<Array>}
+     */
+    async function loadImagesFromDriveFolderName(folderName) {
+      if (!folderName) return [];
+      
+      // Check cache first
+      const cached = CACHE.getImages(folderName);
+      if (cached) {
+        console.log(`[Drive] Cache hit for "${folderName}":`, cached.length, 'images');
+        return cached;
+      }
+      
+      try {
+        // Step 1: Find subfolder by name within main folder
+        console.log(`[Drive] Searching for folder: "${folderName}" in ${CONFIG.DRIVE_FOLDER_ID}`);
+        
+        const searchQuery = encodeURIComponent(`'${CONFIG.DRIVE_FOLDER_ID}' in parents and name = '${folderName}' and mimeType = 'application/vnd.google-apps.folder'`);
+        const searchUrl = `https://www.googleapis.com/drive/v3/files?q=${searchQuery}&key=${CONFIG.DRIVE_API_KEY}&fields=files(id,name)`;
+        
+        const searchResponse = await fetch(searchUrl);
+        if (!searchResponse.ok) throw new Error(`Drive search error: ${searchResponse.status}`);
+        
+        const searchData = await searchResponse.json();
+        
+        if (!searchData.files || searchData.files.length === 0) {
+          console.warn(`[Drive] ⚠️ Folder not found: "${folderName}"`);
+          CACHE.setImages(folderName, []);
+          return [];
+        }
+        
+        const targetFolderId = searchData.files[0].id;
+        console.log(`[Drive] ✅ Found folder ID: ${targetFolderId}`);
+        
+        // Step 2: Get all images from subfolder
+        const imageQuery = encodeURIComponent(`'${targetFolderId}' in parents and mimeType contains 'image/'`);
+        const imageUrl = `https://www.googleapis.com/drive/v3/files?q=${imageQuery}&key=${CONFIG.DRIVE_API_KEY}&fields=files(id,name)&pageSize=100`;
+        
+        const imageResponse = await fetch(imageUrl);
+        if (!imageResponse.ok) throw new Error(`Drive image query error: ${imageResponse.status}`);
+        
+        const imageData = await imageResponse.json();
+        
+        if (!imageData.files || imageData.files.length === 0) {
+          console.warn(`[Drive] ⚠️ No images in folder: "${folderName}"`);
+          CACHE.setImages(folderName, []);
+          return [];
+        }
+        
+        const images = imageData.files.map(file => ({
+          id: file.id,
+          name: file.name,
+          url: `https://lh3.googleusercontent.com/d/${file.id}=${CONFIG.IMAGE_GOOGLE_CDN_SIZE}`
+        }));
+        
+        console.log(`[Drive] ✅ Found ${images.length} images in "${folderName}"`);
+        CACHE.setImages(folderName, images);
+        return images;
+        
+      } catch (error) {
+        console.error(`[Drive] ❌ Error loading images for "${folderName}":`, error);
+        CACHE.setImages(folderName, []);
+        return [];
+      }
+    }
+
+    /**
+     * Load images from Google Drive folder (by folder ID)
+     * @deprecated Use loadImagesFromDriveFolderName instead
      * @param {string} folderId
      * @returns {Promise<Array>}
      */
@@ -407,13 +502,13 @@
       showLoadingState();
       
       try {
-        // Step 1: Fetch profiles from Google Sheet
-        console.log('[Init] Starting data load from Google Sheet...');
-        const profiles = await fetchProfilesFromSheet();
+        // Step 1: Fetch profiles from Web App
+        console.log('[Init] Starting data load from Web App...');
+        const profiles = await fetchProfilesFromWebApp();
         
         // Step 2: STRICT validation - show 503 if no data
         if (!profiles || profiles.length === 0) {
-          console.error('[Init] ❌ No data from Google Sheet - critical error');
+          console.error('[Init] ❌ No data from Web App - critical error');
           showServiceUnavailableError();
           STATE.isLoading = false;
           return;
@@ -427,8 +522,8 @@
         console.log('[Init] Loading images for all profiles...');
         await Promise.all(
           profiles.map(async (profile) => {
-            if (profile.drive_folder_id) {
-              const images = await loadImagesFromDrive(profile.drive_folder_id);
+            if (profile.folder_name) {
+              const images = await loadImagesFromDriveFolderName(profile.folder_name);
               profile.images = images;
             } else {
               profile.images = [];
@@ -1040,5 +1135,5 @@
       initApp();
     });
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d00e7ae26fb06d2',t:'MTc3MTQ1MzE1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d012e5d54d849b9',t:'MTc3MTQ1NjA1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
