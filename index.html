@@ -105,18 +105,28 @@
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full bg-white text-gray-900 overflow-x-hidden">
-  <div id="app" class="h-full w-full overflow-auto"><!-- Navigation -->
+  <div id="app" class="h-full w-full overflow-auto">
+   <!-- Navigation -->
    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-blur border-b border-gray-100">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="flex items-center justify-between h-16"><a href="#" onclick="navigateTo('home')" class="flex items-center space-x-2">
-       <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center"><span class="text-white font-semibold text-sm">A</span>
+     <div class="flex items-center justify-between h-16">
+      <a href="#" onclick="navigateTo('home')" class="flex items-center space-x-2">
+       <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+        <span class="text-white font-semibold text-sm">A</span>
        </div><span id="nav-title" class="font-medium text-lg tracking-tight">Amstel &amp; Appiah</span> </a>
-      <div class="hidden md:flex items-center space-x-8"><a href="#" onclick="navigateTo('home')" class="text-sm text-gray-600 hover:text-black transition-colors">Ontdek</a> <a href="#" onclick="filterByCategory('all')" class="text-sm text-gray-600 hover:text-black transition-colors">Categorieën</a> <a href="#" onclick="showCities()" class="text-sm text-gray-600 hover:text-black transition-colors">Steden</a> <a href="#" onclick="navigateTo('legal')" class="text-sm text-gray-600 hover:text-black transition-colors">Info</a>
+      <div class="hidden md:flex items-center space-x-8">
+       <a href="#" onclick="navigateTo('home')" class="p-2 hover:bg-gray-100 rounded-lg transition-colors" title="Home">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2.793-2.793a1 1 0 011.414 0L12 13.414l4.793-4.793a1 1 0 011.414 0L21 12M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg></a> <a href="#" onclick="filterByCategory('all')" class="text-sm text-gray-600 hover:text-black transition-colors">Categorieën</a> <a href="#" onclick="showCities()" class="text-sm text-gray-600 hover:text-black transition-colors">Steden</a> <a href="#" onclick="showLegalHub()" class="text-sm text-gray-600 hover:text-black transition-colors">Info</a>
       </div>
-      <div class="flex items-center space-x-3"><button onclick="toggleSearch()" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      <div class="flex items-center space-x-3">
+       <button onclick="toggleSearch()" class="p-2 rounded-full hover:bg-gray-100 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg></button> <button class="md:hidden p-2 rounded-full hover:bg-gray-100 transition-colors" onclick="toggleMobileMenu()">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
         </svg></button>
       </div>
      </div>
@@ -124,18 +134,22 @@
     <div id="search-bar" class="hidden border-t border-gray-100 py-4 px-4 sm:px-6 lg:px-8">
      <div class="max-w-2xl mx-auto">
       <div class="relative">
-       <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+       <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
        </svg><input type="text" id="search-input" placeholder="Zoek op naam, categorie of stad..." class="w-full pl-12 pr-4 py-3 bg-gray-50 rounded-full text-sm focus:bg-white border border-transparent focus:border-gray-200 transition-all" oninput="handleSearch(this.value)">
       </div>
      </div>
     </div><!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 py-4 px-4">
-     <div class="space-y-3"><a href="#" onclick="navigateTo('home'); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Ontdek</a> <a href="#" onclick="filterByCategory('all'); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Categorieën</a> <a href="#" onclick="showCities(); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Steden</a> <a href="#" onclick="navigateTo('legal'); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Info</a>
+     <div class="space-y-3">
+      <a href="#" onclick="navigateTo('home'); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Ontdek</a> <a href="#" onclick="filterByCategory('all'); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Categorieën</a> <a href="#" onclick="showCities(); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Steden</a> <a href="#" onclick="navigateTo('legal'); toggleMobileMenu();" class="block py-2 text-gray-600 hover:text-black">Info</a>
      </div>
     </div>
    </nav><!-- Main Content -->
-   <main id="main-content" class="pt-16"><!-- Home View -->
-    <div id="home-view"><!-- Hero Section -->
+   <main id="main-content" class="pt-16">
+    <!-- Home View -->
+    <div id="home-view">
+     <!-- Hero Section -->
      <section class="relative min-h-[70%] flex items-center justify-center px-4 py-20 overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white"></div>
       <div class="absolute top-20 left-10 w-72 h-72 bg-gray-100 rounded-full blur-3xl opacity-60"></div>
@@ -143,16 +157,19 @@
       <div class="relative z-10 text-center max-w-3xl mx-auto">
        <h1 id="hero-heading" class="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-black animate-fade-in-up">Curated Local Excellence</h1>
        <p id="hero-subheading" class="mt-6 text-lg sm:text-xl text-gray-600 font-light leading-relaxed animate-fade-in-up stagger-1">Ontdek vertrouwde lokale bedrijven, producten en diensten in jouw buurt</p>
-       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up stagger-2"><button onclick="scrollToItems()" class="px-8 py-3 bg-black text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-all hover:scale-105"> Ontdek Nu </button> <button onclick="showCities()" class="px-8 py-3 bg-white text-black rounded-full text-sm font-medium border border-gray-200 hover:border-gray-300 transition-all hover:scale-105"> Bekijk Steden </button>
+       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up stagger-2">
+        <button onclick="scrollToItems()" class="px-8 py-3 bg-black text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-all hover:scale-105"> Ontdek Nu </button> <button onclick="showCities()" class="px-8 py-3 bg-white text-black rounded-full text-sm font-medium border border-gray-200 hover:border-gray-300 transition-all hover:scale-105"> Bekijk Steden </button>
        </div>
       </div>
      </section><!-- Filter Bar -->
      <section id="filter-section" class="sticky top-16 z-40 bg-white/90 backdrop-blur-lg border-b border-gray-100 py-4">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
        <div class="flex flex-wrap items-center gap-3">
-        <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0"><button onclick="filterByCategory('all')" class="filter-btn active px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="all"> Alles </button> <button onclick="filterByCategory('restaurant')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="restaurant"> Restaurants </button> <button onclick="filterByCategory('service')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="service"> Diensten </button> <button onclick="filterByCategory('product')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="product"> Producten </button> <button onclick="filterByCategory('beauty')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="beauty"> Beauty </button>
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0">
+         <button onclick="filterByCategory('all')" class="filter-btn active px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="all"> Alles </button> <button onclick="filterByCategory('restaurant')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="restaurant"> Restaurants </button> <button onclick="filterByCategory('service')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="service"> Diensten </button> <button onclick="filterByCategory('product')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="product"> Producten </button> <button onclick="filterByCategory('beauty')" class="filter-btn px-4 py-2 text-sm rounded-full border border-gray-200 hover:border-gray-300 whitespace-nowrap transition-all" data-category="beauty"> Beauty </button>
         </div>
-        <div class="ml-auto flex items-center gap-3"><select id="city-filter" onchange="filterByCity(this.value)" class="px-4 py-2 text-sm rounded-full border border-gray-200 bg-white hover:border-gray-300 transition-all cursor-pointer"> <option value="all">Alle steden</option> </select> <select id="sort-filter" onchange="sortItems(this.value)" class="px-4 py-2 text-sm rounded-full border border-gray-200 bg-white hover:border-gray-300 transition-all cursor-pointer"> <option value="featured">Featured</option> <option value="rating">Beste beoordeeld</option> <option value="newest">Nieuwste</option> </select>
+        <div class="ml-auto flex items-center gap-3">
+         <select id="city-filter" onchange="filterByCity(this.value)" class="px-4 py-2 text-sm rounded-full border border-gray-200 bg-white hover:border-gray-300 transition-all cursor-pointer"> <option value="all">Alle steden</option> </select> <select id="sort-filter" onchange="sortItems(this.value)" class="px-4 py-2 text-sm rounded-full border border-gray-200 bg-white hover:border-gray-300 transition-all cursor-pointer"> <option value="featured">Featured</option> <option value="rating">Beste beoordeeld</option> <option value="newest">Nieuwste</option> </select>
         </div>
        </div>
       </div>
@@ -165,7 +182,8 @@
          <p class="mt-2 text-gray-500">Uitgelichte lokale pareltjes</p>
         </div>
        </div>
-       <div id="featured-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Featured items will be inserted here -->
+       <div id="featured-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Featured items will be inserted here -->
        </div>
       </div>
      </section><!-- All Items Section -->
@@ -177,11 +195,13 @@
          <p class="mt-2 text-gray-500" id="items-count">Alle lokale bedrijven</p>
         </div>
        </div>
-       <div id="items-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"><!-- Items will be inserted here -->
+       <div id="items-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <!-- Items will be inserted here -->
        </div>
        <div id="no-results" class="hidden text-center py-16">
         <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-         <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+         <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
          </svg>
         </div>
         <p class="text-gray-500">Geen resultaten gevonden</p><button onclick="resetFilters()" class="mt-4 text-sm text-black underline hover:no-underline">Reset filters</button>
@@ -190,15 +210,18 @@
      </section>
     </div><!-- Legal Pages View -->
     <div id="legal-view" class="hidden pt-20">
-     <div id="legal-content" class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16"><!-- Legal content inserted here -->
+     <div id="legal-content" class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <!-- Legal content inserted here -->
      </div>
     </div><!-- Profile View -->
     <div id="profile-view" class="hidden">
-     <div id="profile-content"><!-- Profile content will be inserted here -->
+     <div id="profile-content">
+      <!-- Profile content will be inserted here -->
      </div>
     </div><!-- Item Detail View -->
     <div id="item-view" class="hidden">
-     <div id="item-content"><!-- Item content will be inserted here -->
+     <div id="item-content">
+      <!-- Item content will be inserted here -->
      </div>
     </div>
    </main><!-- Footer -->
@@ -207,7 +230,8 @@
      <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
       <div class="md:col-span-2">
        <div class="flex items-center space-x-2 mb-4">
-        <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center"><span class="text-black font-semibold text-sm">A</span>
+        <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+         <span class="text-black font-semibold text-sm">A</span>
         </div><span class="font-medium text-lg tracking-tight">Amstel &amp; Appiah</span>
        </div>
        <p class="text-gray-400 text-sm leading-relaxed max-w-md">Wij verbinden je met vertrouwde lokale bedrijven, diensten en producten. Curated excellence voor jouw buurt.</p>
@@ -239,6 +263,7 @@
      </div>
      <div class="mt-16 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
       <p>© 2024 Amstel &amp; Appiah. Alle rechten voorbehouden.</p>
+      <p class="mt-2 text-xs text-gray-600">v2.0.0 • Legal Pages Edition</p>
      </div>
     </div>
    </footer>
@@ -711,10 +736,11 @@
       const imageUrl = getFirstImage(profile);
       const categoryLabel = getCategoryLabel(profile.category);
       const delay = Math.min(index * 0.05, 0.5);
+      const isFav = isFavorite(profile.slug);
       
       const html = `
         <article 
-          class="glass-card rounded-2xl overflow-hidden border border-gray-100 hover-lift cursor-pointer animate-fade-in-up"
+          class="glass-card rounded-2xl overflow-hidden border border-gray-100 hover-lift cursor-pointer animate-fade-in-up group"
           style="animation-delay: ${delay}s"
           data-slug="${profile.slug}"
         >
@@ -723,13 +749,22 @@
               src="${imageUrl}" 
               alt="${profile.name}"
               loading="lazy"
-              class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             >
             <div class="hidden absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-400 text-sm font-light">
               No Image
             </div>
+            <button 
+              class="absolute top-3 right-3 p-2 glass-card rounded-full transition-all transform hover:scale-110 opacity-0 group-hover:opacity-100"
+              onclick="event.stopPropagation(); toggleFavorite('${profile.slug}'); event.currentTarget.blur();"
+              data-favorite-btn="${profile.slug}"
+            >
+              <svg class="w-5 h-5 ${isFav ? 'text-red-500' : 'text-gray-400'}" fill="${isFav ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+            </button>
             ${profile.featured ? `
-              <div class="absolute top-3 left-3 px-2 py-1 bg-black text-white text-xs rounded-full">
+              <div class="absolute top-3 left-3 px-2 py-1 bg-black text-white text-xs rounded-full animate-fade-in-up">
                 Featured
               </div>
             ` : ''}
@@ -737,7 +772,7 @@
           <div class="p-4">
             <div class="flex items-start justify-between gap-2">
               <div class="min-w-0 flex-1">
-                <h3 class="font-medium text-base truncate">${profile.name}</h3>
+                <h3 class="font-medium text-base truncate group-hover:text-black transition-colors">${profile.name}</h3>
                 <p class="text-sm text-gray-500 mt-0.5">${profile.city}</p>
               </div>
               <div class="flex items-center gap-1 flex-shrink-0">
@@ -953,11 +988,65 @@
     function navigateTo(view) {
       document.getElementById('home-view').classList.add('hidden');
       document.getElementById('profile-view').classList.add('hidden');
+      document.getElementById('legal-view').classList.add('hidden');
       
       if (view === 'home') {
         document.getElementById('home-view').classList.remove('hidden');
+      } else if (view === 'legal') {
+        showLegalHub();
       }
       
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showLegalHub() {
+      const legalPages = ['terms', 'privacy', 'disclaimer', 'cookies'];
+      const lang = 'nl';
+      
+      document.getElementById('home-view').classList.add('hidden');
+      document.getElementById('profile-view').classList.add('hidden');
+      document.getElementById('legal-view').classList.remove('hidden');
+      
+      let cardsHtml = `
+        <div class="mb-12 animate-fade-in-up">
+          <h1 class="text-3xl sm:text-4xl font-light tracking-tight mb-3">Juridisch</h1>
+          <p class="text-gray-600">Alles wat je moet weten over onze voorwaarden, privacy en policies</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      `;
+      
+      legalPages.forEach((page, idx) => {
+        const content = LEGAL_CONTENT[lang][page];
+        const preview = content.sections[0].text.replace(/<br>/g, ' ').substring(0, 80) + '...';
+        const icons = {
+          terms: '📜',
+          privacy: '🔐',
+          disclaimer: '⚠️',
+          cookies: '🍪'
+        };
+        
+        cardsHtml += `
+          <div 
+            class="glass-card rounded-2xl border border-gray-100 p-6 hover-lift animate-fade-in-up cursor-pointer transition-all"
+            style="animation-delay: ${idx * 0.1}s"
+            onclick="showLegalPage('${page}')"
+          >
+            <div class="text-4xl mb-4">${icons[page]}</div>
+            <h3 class="text-lg font-medium mb-2">${content.title.replace(icons[page] + ' ', '')}</h3>
+            <p class="text-sm text-gray-600 mb-4">${preview}</p>
+            <div class="text-sm font-medium text-black flex items-center gap-1 hover:gap-2 transition-all">
+              Lees meer
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+        `;
+      });
+      
+      cardsHtml += `</div>`;
+      
+      document.getElementById('legal-content').innerHTML = cardsHtml;
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -1301,32 +1390,43 @@
       
       document.getElementById('home-view').classList.add('hidden');
       document.getElementById('profile-view').classList.add('hidden');
-      document.getElementById('item-view').classList.add('hidden');
       document.getElementById('legal-view').classList.remove('hidden');
       
       let html = `
-        <button onclick="navigateTo('home')" class="inline-flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-black mb-8 transition-colors">
+        <button onclick="showLegalHub()" class="inline-flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-black mb-8 transition-colors transform hover:scale-105 animate-fade-in-up">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/>
           </svg>
-          Terug
+          Terug naar juridisch
         </button>
-        <h1 class="text-3xl sm:text-4xl font-light tracking-tight mb-12">${content.title}</h1>
-        <div class="prose prose-sm max-w-none space-y-8">
+        
+        <div class="mb-12 animate-fade-in-up stagger-1">
+          <h1 class="text-3xl sm:text-4xl font-light tracking-tight mb-3">${content.title}</h1>
+        </div>
+        
+        <div class="space-y-8">
       `;
       
       content.sections.forEach((section, idx) => {
         html += `
-          <div class="animate-fade-in-up" style="animation-delay: ${idx * 0.1}s">
-            <h2 class="text-lg sm:text-xl font-medium mb-3 mt-6">${section.heading}</h2>
-            <p class="text-gray-600 leading-relaxed text-sm sm:text-base">${section.text}</p>
+          <div class="animate-fade-in-up" style="animation-delay: ${(idx + 2) * 0.08}s">
+            <h2 class="text-lg sm:text-xl font-medium mb-3 text-black">${section.heading}</h2>
+            <div class="text-gray-600 leading-relaxed text-sm sm:text-base space-y-2">
+              ${section.text.split('<br>').map(para => {
+                if (para.startsWith('•')) {
+                  return `<li class="ml-4">${para.substring(1).trim()}</li>`;
+                }
+                return `<p>${para.trim()}</p>`;
+              }).join('')}
+            </div>
           </div>
         `;
       });
       
       html += `
         </div>
-        <div class="mt-16 pt-8 border-t border-gray-200 text-center text-xs sm:text-sm text-gray-500">
+        
+        <div class="mt-16 pt-8 border-t border-gray-200 text-center text-xs sm:text-sm text-gray-500 animate-fade-in-up" style="animation-delay: ${(content.sections.length + 3) * 0.08}s">
           <p>© 2024 Amstel & Appiah. Alle rechten voorbehouden.</p>
         </div>
       `;
@@ -1339,7 +1439,52 @@
     document.addEventListener('DOMContentLoaded', () => {
       attachFilterHandlers();
       initApp();
+      loadFavorites();
     });
+
+    /* ==============================
+       13. FAVORITES SYSTEM
+    ============================== */
+    
+    const FAVORITES_KEY = 'aa_favorites';
+    let favorites = [];
+
+    function loadFavorites() {
+      const stored = localStorage.getItem(FAVORITES_KEY);
+      favorites = stored ? JSON.parse(stored) : [];
+    }
+
+    function saveFavorites() {
+      localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+    }
+
+    function toggleFavorite(slug) {
+      const idx = favorites.indexOf(slug);
+      if (idx > -1) {
+        favorites.splice(idx, 1);
+      } else {
+        favorites.push(slug);
+      }
+      saveFavorites();
+      updateFavoriteButtons();
+    }
+
+    function isFavorite(slug) {
+      return favorites.includes(slug);
+    }
+
+    function updateFavoriteButtons() {
+      document.querySelectorAll('[data-favorite-btn]').forEach(btn => {
+        const slug = btn.dataset.favoriteBtn;
+        if (isFavorite(slug)) {
+          btn.classList.add('text-red-500');
+          btn.classList.remove('text-gray-400');
+        } else {
+          btn.classList.remove('text-red-500');
+          btn.classList.add('text-gray-400');
+        }
+      });
+    }
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d013798403db93e',t:'MTc3MTQ1NjQyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d07845d444796fa',t:'MTc3MTUyMjQ4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
